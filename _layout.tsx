@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { useAuthStore } from '../src/store/authStore';
-import { COLORS } from '../src/constants/colors';
+// CORREÇÃO: Importação direta da raiz
+import { useAuthStore } from './authStore';
+import { COLORS } from './colors';
 
 export default function RootLayout() {
   const { isAuthenticated, isLoading, checkAuth } = useAuthStore();
@@ -16,13 +17,15 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (isLoading) return;
-    const inAuthGroup = segments[0] === '(tabs)';
+    
+    // CORREÇÃO: Como não há pastas, o roteamento deve apontar para os arquivos soltos
+    const inAuthGroup = segments[0] === 'home'; // Exemplo: se home.tsx for sua tela principal
     const isLoginPage = segments.length === 0 || segments[0] === 'index';
 
     if (!isAuthenticated && !isLoginPage && inAuthGroup) {
       router.replace('/');
     } else if (isAuthenticated && isLoginPage) {
-      router.replace('/(tabs)/home');
+      router.replace('/home'); 
     }
   }, [isAuthenticated, segments, isLoading]);
 
@@ -44,8 +47,9 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" />
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="module/[id]" options={{ presentation: 'card' }} />
+        <Stack.Screen name="home" />
+        <Stack.Screen name="receitas" />
+        <Stack.Screen name="plano" />
       </Stack>
     </>
   );
