@@ -1,9 +1,8 @@
 {
-  "name": "app-fabiana",
+  "name": "nutri-app",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "build": "npx expo export -p web"
+    "build": "expo export -p web"
   },
   "dependencies": {
     "expo": "^50.0.0",
