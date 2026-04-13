@@ -7,7 +7,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { COLORS } from '../constants/colors';
+// CORREÇÃO: Removido '../constants/' pois o arquivo colors está na raiz
+import { COLORS } from './colors';
 
 interface PremiumButtonProps {
   title: string;
