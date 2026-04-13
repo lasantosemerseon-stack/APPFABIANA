@@ -1,0 +1,32 @@
+export const COLORS = {
+  primary: '#00C896',
+  primaryLight: '#00E6AC',
+  primaryDark: '#00906B',
+  secondary: '#FF6B35',
+  secondaryLight: '#FF8A5C',
+  accent: '#FFD700',
+  black: '#0A0A0A',
+  surface: '#121212',
+  surfaceElevated: '#1A1A1A',
+  white: '#FFFFFF',
+  gray: '#A1A1AA',
+  grayLight: '#71717A',
+  grayDark: '#27272A',
+  border: '#27272A',
+  red: '#EF4444',
+  green: '#4CAF50',
+  orange: '#FF9800',
+  pink: '#E91E63',
+  blue: '#2196F3',
+  purple: '#9C27B0',
+  brown: '#795548',
+  yellow: '#FFC107',
+};
+
+export const GRADIENTS = {
+  premium: ['#0A0A0A', '#0D1F15', '#0A0A0A'] as const,
+  primary: ['#00C896', '#00906B'] as const,
+  secondary: ['#FF6B35', '#E55B2B'] as const,
+  card: ['rgba(18,18,18,0.9)', 'rgba(10,10,10,1)'] as const,
+  hero: ['transparent', 'rgba(10,10,10,0.6)', 'rgba(10,10,10,0.95)'] as const,
+};
