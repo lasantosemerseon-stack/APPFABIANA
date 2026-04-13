@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Linking, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { WHATSAPP_NUMBER } from '../constants/images';
+// CORREÇÃO: importado diretamente da raiz
+import { WHATSAPP_NUMBER } from './images';
 
 export function WhatsAppButton() {
   const openWhatsApp = () => {
