@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "app-fabiana",
+    "slug": "app-fabiana",
+    "version": "1.0.0",
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    }
+  }
+}
