@@ -7,11 +7,12 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { COLORS, GRADIENTS } from '../src/constants/colors';
-import { LOGO_URL, FOOD_IMAGES } from '../src/constants/images';
-import { GlowingLine, PremiumButton } from '../src/components';
-import { login } from '../src/services/api';
-import { useAuthStore } from '../src/store/authStore';
+// CORREÇÃO: Imports diretos da raiz
+import { COLORS, GRADIENTS } from './colors';
+import { LOGO_URL, FOOD_IMAGES } from './images';
+import { GlowingLine, PremiumButton } from './index'; // Verifique se você tem um arquivo index.ts na raiz exportando esses componentes
+import { login } from './api';
+import { useAuthStore } from './authStore';
 
 const { width, height } = Dimensions.get('window');
 
@@ -46,7 +47,7 @@ export default function LoginScreen() {
       const response = await login(email.trim(), password);
       if (response.success && response.user) {
         await storeLogin(response.user);
-        router.replace('/(tabs)/home');
+        router.replace('/home'); // CORREÇÃO: apontando para home.tsx na raiz
       } else {
         Alert.alert('Erro', response.message || 'Credenciais inválidas.');
       }
@@ -111,15 +112,4 @@ const styles = StyleSheet.create({
   logoContainer: { position: 'relative', marginBottom: 20, alignItems: 'center', justifyContent: 'center' },
   pulsingCircle: { position: 'absolute', width: 180, height: 180, borderRadius: 90, backgroundColor: COLORS.primaryLight },
   staticCircle: { position: 'absolute', width: 160, height: 160, borderRadius: 80, backgroundColor: COLORS.primary },
-  logo: { width: 150, height: 150, borderRadius: 75, zIndex: 10 },
-  brandContainer: { alignItems: 'center', marginBottom: 40 },
-  brandName: { fontSize: 32, fontWeight: 'bold', color: COLORS.white, letterSpacing: 3, marginBottom: 12, textShadowColor: COLORS.primaryLight, textShadowOffset: { width: 0, height: 2 }, textShadowRadius: 10 },
-  slogan: { fontSize: 14, color: COLORS.primaryLight, marginTop: 12, textAlign: 'center', fontStyle: 'italic' },
-  formContainer: { width: '100%', maxWidth: 350 },
-  inputWrapper: { marginBottom: 20 },
-  inputLabel: { color: COLORS.white, fontSize: 14, fontWeight: '600', marginBottom: 8, marginLeft: 4 },
-  input: { backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 16, padding: 16, color: COLORS.white, fontSize: 16, borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)' },
-  hintText: { color: COLORS.gray, fontSize: 12, textAlign: 'center', marginBottom: 24 },
-  loginButton: { width: '100%' },
-  decorativeLines: { flexDirection: 'row', alignItems: 'center', marginTop: 40, gap: 10 },
-});
+  logo: { width:
