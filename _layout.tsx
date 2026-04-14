@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-// CORREÇÃO: Importação direta da raiz
 import { useAuthStore } from './authStore';
 import { COLORS } from './colors';
 
@@ -18,14 +17,14 @@ export default function RootLayout() {
   useEffect(() => {
     if (isLoading) return;
     
-    // CORREÇÃO: Como não há pastas, o roteamento deve apontar para os arquivos soltos
-    const inAuthGroup = segments[0] === 'home'; // Exemplo: se home.tsx for sua tela principal
+    // Verifica se estamos em uma das telas protegidas
+    const inAuthGroup = ['Home', 'Receitas', 'Plano'].includes(segments[0]);
     const isLoginPage = segments.length === 0 || segments[0] === 'index';
 
     if (!isAuthenticated && !isLoginPage && inAuthGroup) {
       router.replace('/');
     } else if (isAuthenticated && isLoginPage) {
-      router.replace('/home'); 
+      router.replace('/Home'); 
     }
   }, [isAuthenticated, segments, isLoading]);
 
@@ -47,9 +46,9 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" />
-        <Stack.Screen name="home" />
-        <Stack.Screen name="receitas" />
-        <Stack.Screen name="plano" />
+        <Stack.Screen name="Home" />
+        <Stack.Screen name="Receitas" />
+        <Stack.Screen name="Plano" />
       </Stack>
     </>
   );
