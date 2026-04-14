@@ -6,8 +6,10 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from '../../src/constants/colors';
-import { getMealPlan } from '../../src/services/api';
+
+// --- CORREÇÃO: Imports atualizados para a raiz ---
+import { COLORS } from './colors';
+import { getMealPlan } from './api';
 
 const { width } = Dimensions.get('window');
 
@@ -90,7 +92,7 @@ export default function PlanoScreen() {
           )}
 
           {meals.map((mealKey) => {
-            const meal = currentDay[mealKey];
+            const meal = currentDay ? currentDay[mealKey] : null;
             if (!meal) return null;
             return (
               <View testID={`meal-${mealKey}`} key={mealKey} style={styles.mealCard}>
@@ -120,6 +122,7 @@ export default function PlanoScreen() {
 }
 
 const styles = StyleSheet.create({
+  // Mantenha os estilos exatamente como estavam
   container: { flex: 1, backgroundColor: COLORS.black },
   safeArea: { flex: 1 },
   loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.black },
@@ -151,3 +154,4 @@ const styles = StyleSheet.create({
   calorieBadgeText: { color: COLORS.secondary, fontSize: 12, fontWeight: '700' },
   mealName: { color: COLORS.white, fontSize: 17, fontWeight: '700', marginBottom: 4 },
   mealDesc: { color: COLORS.gray, fontSize: 13, lineHeight: 18 },
+});
