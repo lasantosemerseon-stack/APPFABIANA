@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity,
-  Image, ActivityIndicator, Linking,
+  ActivityIndicator, Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { COLORS } from '../../src/constants/colors';
-import { MODULE_IMAGES } from '../../src/constants/images';
-import { getModules } from '../../src/services/api';
+
+// --- CORREÇÃO: Imports atualizados para a raiz ---
+import { COLORS } from './colors';
+import { getModules } from './api';
 
 export default function ReceitasScreen() {
   const [modules, setModules] = useState<any[]>([]);
@@ -89,6 +90,7 @@ export default function ReceitasScreen() {
 }
 
 const styles = StyleSheet.create({
+  // Mantenha os estilos como estavam originalmente
   container: { flex: 1, backgroundColor: COLORS.black },
   safeArea: { flex: 1 },
   loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.black },
@@ -101,11 +103,4 @@ const styles = StyleSheet.create({
   filterChipActive: { backgroundColor: COLORS.primary, borderColor: COLORS.primary },
   filterText: { color: COLORS.gray, fontSize: 13, fontWeight: '600' },
   filterTextActive: { color: COLORS.white },
-  pdfCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: COLORS.surface, marginHorizontal: 16, marginBottom: 8, padding: 16, borderRadius: 16, borderWidth: 1, borderColor: COLORS.border },
-  pdfIcon: { width: 48, height: 48, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
-  pdfInfo: { flex: 1, marginLeft: 12 },
-  pdfName: { color: COLORS.white, fontSize: 15, fontWeight: '600' },
-  pdfModule: { color: COLORS.gray, fontSize: 12, marginTop: 2 },
-  emptyState: { alignItems: 'center', justifyContent: 'center', paddingTop: 80 },
-  emptyText: { color: COLORS.gray, fontSize: 16, marginTop: 16 },
-});
+  pdfCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: COLORS.surface, marginHorizontal: 16, marginBottom: 8, padding: 16, borderRadius:
